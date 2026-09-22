@@ -21,4 +21,5 @@
 ![Et tilfeldig bilde](https://picsum.photos/400/250)
 
 ## Kodeblokk
+```python
 print("Hei")
