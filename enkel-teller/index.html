@@ -1,4 +1,3 @@
-html
 <!DOCTYPE html>
 <html lang="no">
 <head>
@@ -7,30 +6,48 @@ html
 </head>
 
 <body>
-
     <h1>Enkel teller</h1>
 
     <h2 id="teller">0</h2>
 
-    <button type="button" onclick="teller++; oppdaterTeller();">
-        +
-    </button>
-
-    <button type="button" onclick="teller--; oppdaterTeller();">
-        -
-    </button>
+    <button type="button" onclick="endreTeller(1);">+</button>
+    <button type="button" onclick="endreTeller(-1);">-</button>
+    <button type="button" onclick="nullstillTeller();">nullstill</button>
+    <button type="button" onclick="save();">Save</button>
 
     <script>
-        let teller = 0;
+        const lagringNokkel = 'enkel-teller';
         const tellerElement = document.getElementById('teller');
 
+        function hentTeller() {
+            const lagretTeller = Number.parseInt(localStorage.getItem(lagringNokkel), 10);
+            return Number.isFinite(lagretTeller) ? lagretTeller : 0;
+        }
+
+        let teller = hentTeller();
+
+        function save() {
+            localStorage.setItem(lagringNokkel, String(teller));
+        }
+
         function oppdaterTeller() {
-            tellerElement.textContent = teller;
+            tellerElement.textContent = String(teller);
+        }
+
+        function endreTeller(endring) {
+            teller += endring;
+            oppdaterTeller();
+            save();
+        }
+
+        function nullstillTeller() {
+            teller = 0;
+            oppdaterTeller();
+            save();
         }
 
         oppdaterTeller();
     </script>
-
 </body>
 </html>
 

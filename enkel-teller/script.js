@@ -1,20 +1,36 @@
-javascript
 let teller = 0;
+
+function oppdaterTeller() {
+    const tellerElement = document.getElementById("teller");
+    if (tellerElement) {
+        tellerElement.textContent = teller;
+    }
+}
 
 function pluss() {
     teller = teller + 1;
-    document.getElementById("teller").textContent = teller;
+    oppdaterTeller();
 }
 
 function minus() {
     teller = teller - 1;
-    document.getElementById("teller").textContent = teller;
+    oppdaterTeller();
 }
 
 function nullstill() {
     teller = 0;
-    document.getElementById("teller").textContent = teller;
+    oppdaterTeller();
 }
+
+function save() {
+    const lagretElement = document.getElementById("lagret");
+    if (lagretElement) {
+        const tellerString = teller + " - ";
+        lagretElement.textContent += (lagretElement.textContent ? " " : "") + tellerString;
+    }
+    nullstill();
+}
+
 
 
 
