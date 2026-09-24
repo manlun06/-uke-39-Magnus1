@@ -24,7 +24,7 @@ function visLagretTeller() {
 }
 
 function endreTeller(endring) {
-    teller += endring;
+    teller = Math.max(0, teller + endring);
     oppdaterTeller();
 }
 
@@ -34,7 +34,7 @@ function nullstillTeller() {
 }
 
 function load() {
-    teller = hentTeller();
+    teller = Math.max(0, hentTeller());
     oppdaterTeller();
     visLagretTeller();
 }
