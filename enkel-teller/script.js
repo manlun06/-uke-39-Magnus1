@@ -28,21 +28,9 @@ function endreTeller(endring) {
     oppdaterTeller();
 }
 
-function pluss() {
-    endreTeller(1);
-}
-
-function minus() {
-    endreTeller(-1);
-}
-
 function nullstillTeller() {
     teller = 0;
     oppdaterTeller();
-}
-
-function nullstill() {
-    nullstillTeller();
 }
 
 function load() {
@@ -56,6 +44,4 @@ function save() {
     visLagretTeller();
 }
 
-teller = hentTeller();
-oppdaterTeller();
-visLagretTeller();
+load();
