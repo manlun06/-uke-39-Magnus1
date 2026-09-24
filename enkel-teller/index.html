@@ -1,0 +1,45 @@
+html
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <title>Enkel teller</title>
+</head>
+
+<body>
+
+    <h1>Enkel teller</h1>
+
+    <h2 id="teller">0</h2>
+
+    <button type="button" onclick="teller++; oppdaterTeller();">
+        +
+    </button>
+
+    <button type="button" onclick="teller--; oppdaterTeller();">
+        -
+    </button>
+
+    <script>
+        let teller = 0;
+        const tellerElement = document.getElementById('teller');
+
+        function oppdaterTeller() {
+            tellerElement.textContent = teller;
+        }
+
+        oppdaterTeller();
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
