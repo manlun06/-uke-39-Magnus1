@@ -9,45 +9,15 @@
     <h1>Enkel teller</h1>
 
     <h2 id="teller">0</h2>
+    <p id="lagret">Lagret verdi: ingen</p>
 
     <button type="button" onclick="endreTeller(1);">+</button>
     <button type="button" onclick="endreTeller(-1);">-</button>
     <button type="button" onclick="nullstillTeller();">nullstill</button>
     <button type="button" onclick="save();">Save</button>
+    <button type="button" onclick="load();">Load</button>
 
-    <script>
-        const lagringNokkel = 'enkel-teller';
-        const tellerElement = document.getElementById('teller');
-
-        function hentTeller() {
-            const lagretTeller = Number.parseInt(localStorage.getItem(lagringNokkel), 10);
-            return Number.isFinite(lagretTeller) ? lagretTeller : 0;
-        }
-
-        let teller = hentTeller();
-
-        function save() {
-            localStorage.setItem(lagringNokkel, String(teller));
-        }
-
-        function oppdaterTeller() {
-            tellerElement.textContent = String(teller);
-        }
-
-        function endreTeller(endring) {
-            teller += endring;
-            oppdaterTeller();
-            save();
-        }
-
-        function nullstillTeller() {
-            teller = 0;
-            oppdaterTeller();
-            save();
-        }
-
-        oppdaterTeller();
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 

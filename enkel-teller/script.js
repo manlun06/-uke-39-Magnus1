@@ -1,43 +1,61 @@
+const lagringNokkel = "enkel-teller";
+
 let teller = 0;
+
+function hentTeller() {
+    const lagretTeller = Number.parseInt(localStorage.getItem(lagringNokkel), 10);
+    return Number.isFinite(lagretTeller) ? lagretTeller : 0;
+}
 
 function oppdaterTeller() {
     const tellerElement = document.getElementById("teller");
     if (tellerElement) {
-        tellerElement.textContent = teller;
+        tellerElement.textContent = String(teller);
     }
 }
 
-function pluss() {
-    teller = teller + 1;
+function visLagretTeller() {
+    const lagretElement = document.getElementById("lagret");
+    const lagretVerdi = localStorage.getItem(lagringNokkel);
+
+    if (lagretElement) {
+        lagretElement.textContent = lagretVerdi !== null ? `Lagret verdi: ${lagretVerdi}` : "Lagret verdi: ingen";
+    }
+}
+
+function endreTeller(endring) {
+    teller += endring;
     oppdaterTeller();
+}
+
+function pluss() {
+    endreTeller(1);
 }
 
 function minus() {
-    teller = teller - 1;
-    oppdaterTeller();
+    endreTeller(-1);
 }
 
-function nullstill() {
+function nullstillTeller() {
     teller = 0;
     oppdaterTeller();
 }
 
-function save() {
-    const lagretElement = document.getElementById("lagret");
-    if (lagretElement) {
-        const tellerString = teller + " - ";
-        lagretElement.textContent += (lagretElement.textContent ? " " : "") + tellerString;
-    }
-    nullstill();
+function nullstill() {
+    nullstillTeller();
 }
 
+function load() {
+    teller = hentTeller();
+    oppdaterTeller();
+    visLagretTeller();
+}
 
+function save() {
+    localStorage.setItem(lagringNokkel, String(teller));
+    visLagretTeller();
+}
 
-
-
-
-
-
-
-
-
+teller = hentTeller();
+oppdaterTeller();
+visLagretTeller();
